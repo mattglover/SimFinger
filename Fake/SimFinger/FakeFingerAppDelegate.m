@@ -107,11 +107,12 @@ void WindowFrameDidChangeCallback( AXObserverRef observer, AXUIElementRef elemen
 			int iPadHeight = 1108;
 			
 			if((int)size.width == iPhoneWidth && (int)size.height == iPhoneHeight) {
-				[hardwareOverlay setContentSize:NSMakeSize(634, 985)];
-				[hardwareOverlay setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"iPhoneFrame"]]];
+				//[hardwareOverlay setContentSize:NSMakeSize(634, 985)];
+                [hardwareOverlay setContentSize:NSMakeSize(1400, 985)];
+				[hardwareOverlay setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"iPhoneFrame_DuchySoftware"]]];
 				
-				[fadeOverlay setContentSize:NSMakeSize(634,985)];
-				[fadeOverlay setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"FadeFrame"]]];
+				//[fadeOverlay setContentSize:NSMakeSize(634,985)];
+				//[fadeOverlay setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"FadeFrame"]]];
 				
 				supportedSize = YES;
 			} else if((int)size.width == iPhoneHeight && (int)size.height == iPhoneWidth) {
@@ -405,10 +406,11 @@ CGEventRef tapCallBack(CGEventTapProxy proxy, CGEventType type, CGEventRef event
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-	hardwareOverlay = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 634, 985) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+	//hardwareOverlay = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 634, 985) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+    hardwareOverlay = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 1400, 985) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
 	[hardwareOverlay setAlphaValue:1.0];
 	[hardwareOverlay setOpaque:NO];
-	[hardwareOverlay setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"iPhoneFrame"]]];
+	[hardwareOverlay setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"iPhoneFrame_DuchySoftware"]]];
 	[hardwareOverlay setIgnoresMouseEvents:YES];
 	[hardwareOverlay setLevel:NSFloatingWindowLevel - 1];
 	[hardwareOverlay orderFront:nil];
@@ -424,10 +426,11 @@ CGEventRef tapCallBack(CGEventTapProxy proxy, CGEventType type, CGEventRef event
 	[self _updateWindowPosition];
 	[pointerOverlay orderFront:nil];
 	
-	fadeOverlay = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 634, 985) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
-	[fadeOverlay setAlphaValue:1.0];
+	//fadeOverlay = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 634, 985) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+    fadeOverlay = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, 1400, 985) styleMask:NSBorderlessWindowMask backing:NSBackingStoreBuffered defer:NO];
+	[fadeOverlay setAlphaValue:0.0];
 	[fadeOverlay setOpaque:NO];
-	[fadeOverlay setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"FadeFrame"]]];
+//	[fadeOverlay setBackgroundColor:[NSColor colorWithPatternImage:[NSImage imageNamed:@"FadeFrame"]]];
 	[fadeOverlay setIgnoresMouseEvents:YES];
 	[fadeOverlay setLevel:NSFloatingWindowLevel + 1];
 	[fadeOverlay orderFront:nil];
